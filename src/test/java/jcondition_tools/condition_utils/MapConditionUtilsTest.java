@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class MapConditionUtilsTest {
     static final Map<Object, Object> EMPTY_MAP = Collections.emptyMap();
     static final Map<Character, Character> NON_EMPTY_MAP = Map.of('a', 'b');
-    static final Map NULL_MAP = null;
+    static final Map<?> NULL_MAP = null;
     static final Map.Entry<Character, Character> TUPLE_A_B = new Map.Entry<>() {
         private Character value = 'b';
 
@@ -82,22 +82,22 @@ class MapConditionUtilsTest {
     }
 
     private static Map<Character, Character> generateABMap() {
-        Map<Character, Character> a_b_map = new HashMap<>();
-        a_b_map.put(TUPLE_A_B.getKey(), TUPLE_A_B.getValue());
-        return a_b_map;
+        Map<Character, Character> abMap = new HashMap<>();
+        abMap.put(TUPLE_A_B.getKey(), TUPLE_A_B.getValue());
+        return abMap;
     }
 
     private static Map<Character, Character> generateABCDMap() {
-        Map<Character, Character> a_b_c_d_map = new HashMap<>();
-        a_b_c_d_map.put(TUPLE_A_B.getKey(), TUPLE_A_B.getValue());
-        a_b_c_d_map.put(TUPLE_C_D.getKey(), TUPLE_C_D.getValue());
-        return a_b_c_d_map;
+        Map<Character, Character> abcdMap = new HashMap<>();
+        abcdMap.put(TUPLE_A_B.getKey(), TUPLE_A_B.getValue());
+        abcdMap.put(TUPLE_C_D.getKey(), TUPLE_C_D.getValue());
+        return abcdMap;
     }
 
     private static Map<Character, Character> generateCDMap() {
-        Map<Character, Character> c_d_map = new HashMap<>();
-        c_d_map.put(TUPLE_C_D.getKey(), TUPLE_C_D.getValue());
-        return c_d_map;
+        Map<Character, Character> cdMap = new HashMap<>();
+        cdMap.put(TUPLE_C_D.getKey(), TUPLE_C_D.getValue());
+        return cdMap;
     }
 
     @Test
@@ -111,10 +111,10 @@ class MapConditionUtilsTest {
 
     @Test
     void testContainsAllPositive() {
-        Map<Character, Character> empty_character_character_map = new HashMap<>();
+        Map<Character, Character> emptyCharacterCharacterMap = new HashMap<>();
         assertTrue(MapConditionUtils.containsAll(A_B_MAP, null));
         assertTrue(MapConditionUtils.containsAll(A_B_MAP, NULL_MAP));
-        assertTrue(MapConditionUtils.containsAll(A_B_MAP, empty_character_character_map));
+        assertTrue(MapConditionUtils.containsAll(A_B_MAP, emptyCharacterCharacterMap));
         assertTrue(MapConditionUtils.containsAll(A_B_MAP, A_B_MAP));
         assertTrue(MapConditionUtils.containsAll(A_B_C_D_MAP, A_B_MAP));
         assertTrue(MapConditionUtils.containsAll(A_B_C_D_MAP, C_D_MAP));
@@ -145,12 +145,12 @@ class MapConditionUtilsTest {
 
     @Test
     void testContainsNonePositive() {
-        Map<Character, Character> empty_character_character_map = new HashMap<>();
+        Map<Character, Character> emptyCharacterCharacterMap = new HashMap<>();
         assertTrue(MapConditionUtils.containsNone(null, null));
         assertTrue(MapConditionUtils.containsNone(EMPTY_MAP, null));
         assertTrue(MapConditionUtils.containsNone(NULL_MAP, null));
         assertTrue(MapConditionUtils.containsNone(NON_EMPTY_MAP, null));
-        assertTrue(MapConditionUtils.containsNone(NON_EMPTY_MAP, empty_character_character_map));
+        assertTrue(MapConditionUtils.containsNone(NON_EMPTY_MAP, emptyCharacterCharacterMap));
         assertTrue(MapConditionUtils.containsNone(NON_EMPTY_MAP, NULL_MAP));
         assertTrue(MapConditionUtils.containsNone(NON_EMPTY_MAP, C_D_MAP));
     }

@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class CollectionConditionUtilsTest {
-    static final Collection NULL_LIST = null;
+    static final Collection<?> NULL_LIST = null;
     static final Collection<Object> EMPTY_COLLECTION = Collections.emptyList();
     static final Collection<Integer> NON_EMPTY_COLLECTION = Arrays.asList(1, 2);
 
