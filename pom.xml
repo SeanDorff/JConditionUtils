@@ -251,20 +251,6 @@
                     </execution>
                 </executions>
             </plugin>
-            <!-- deployment -->
-            <plugin>
-                <groupId>org.sonatype.central</groupId>
-                <artifactId>central-publishing-maven-plugin</artifactId>
-                <version>0.7.0</version>
-                <extensions>true</extensions>
-                <configuration>
-                    <publishingServerId>central</publishingServerId>
-                    <autoPublish>true</autoPublish>
-                    <waitUntil>published</waitUntil>
-                    <checksums>all</checksums>
-                    <deploymentName>${project.name}</deploymentName>
-                </configuration>
-            </plugin>
         </plugins>
     </build>
 </project>
