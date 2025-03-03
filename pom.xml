@@ -262,7 +262,7 @@
                     <autoPublish>true</autoPublish>
                     <waitUntil>published</waitUntil>
                     <checksums>all</checksums>
-                    <deploymentName>${name}}</deploymentName>
+                    <deploymentName>${project.name}</deploymentName>
                 </configuration>
             </plugin>
             <!--<plugin>
